@@ -1,21 +1,20 @@
-const bills=[50,100,150,200];
-console.log("fixed bills are as follows ",bills);
-let indexVal = bills.indexOf(50);
-// console.log("index value of bill is ",indexVal);
-let bill = bills[indexVal];
-console.log("Your Bill value is ",bill);
+const billval=[50,100,150,200,250,300,350,400];
+const tip = [];
+const total = [];
 
-if(bill<100){
-    console.log("GST is 15%")
-    let gst= (bill*15)/100;
-    console.log("GST value is",gst)
-    bills[indexVal]=bill+gst;
-    console.log("final bill list is",bills);
+const calTip = (billval) => {
+    for(let i = 0; i < billval.length; i++){
+        if(billval[i] >=50 && billval[i] <= 300){
+            tip.push(billval[i] * 0.15);
+            total.push(billval[i] + (billval[i] * 0.15))
+        }else{
+            tip.push(billval[i] * 0.20);
+            total.push(billval[i] + (billval[i] * 0.2))
+        }
+    }
 }
-else{
-    console.log("GST is 20%");
-    let gst = (bill*20)/100;
-    console.log("GST value is",gst);
-    bills[indexVal]=bill+gst;
-    console.log("final bill list is",bills);
-}
+
+calTip(billval);
+console.log('bill val', billval)
+console.log('calc tip', tip)
+console.log('final bill', total);
